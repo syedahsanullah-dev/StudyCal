@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Calendar</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <div class="header-brand">
+      <span class="brand-icon">📚</span>
+      <div>
+        <h1 class="brand-title">Study Calendar</h1>
+        <span class="brand-sub" id="header-range">Loading…</span>
+      </div>
+    </div>
+    <nav class="header-actions">
+      <!-- Sync status indicator -->
+      <div class="sync-indicator" title="Firebase sync status">
+        <span class="sync-dot" id="sync-dot"></span>
+        <span class="sync-label" id="sync-label">Connecting…</span>
+      </div>
+      <button class="hbtn" id="btn-export"         title="Export progress as JSON">⬇ Export</button>
+      <button class="hbtn" id="btn-import-trigger" title="Import saved JSON">⬆ Import</button>
+      <input  type="file"  id="btn-import"          accept=".json" style="display:none">
+      <button class="hbtn" id="btn-print"           title="Print schedule">🖨 Print</button>
+      <button class="hbtn" id="btn-settings"        title="Settings">⚙ Settings</button>
+      <button class="hbtn hbtn-icon" id="btn-dark"  title="Toggle dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <!-- ══ LEGEND ══════════════════════════════════════════════════ -->
+  <div class="legend-bar" id="legend-bar">
+    <span class="legend-title">Subject Types:</span>
+    <span class="legend-pill lang">Language</span>
+    <span class="legend-pill theory">Theory</span>
+    <span class="legend-pill practical">Practical</span>
+    <span class="legend-pill mgt">Management</span>
+    <span class="legend-sep"></span>
+    <span class="legend-pill overdue-pill">Overdue</span>
+    <span class="legend-pill missed-pill">Missed</span>
+    <span class="legend-pill today-pill">Today</span>
+  </div>
+
+  <!-- ══ STATS BAR ════════════════════════════════════════════════ -->
+  <section class="stats-bar" id="stats-bar">
+    <div class="stat-card">
+      <span class="stat-val" id="stat-done">0</span>
+      <span class="stat-lbl">Done</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-val" id="stat-remaining">0</span>
+      <span class="stat-lbl">Remaining</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-val" id="stat-pct">0%</span>
+      <span class="stat-lbl">Overall</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-val" id="stat-hours">0h</span>
+      <span class="stat-lbl">Daily hrs est.</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-val" id="stat-days">0</span>
+      <span class="stat-lbl">Days left</span>
+    </div>
+    <div class="overall-bar-wrap">
+      <div class="overall-bar-track">
+        <div class="overall-bar-fill" id="overall-bar-fill"></div>
+      </div>
+      <span class="overall-bar-label" id="overall-bar-label">0%</span>
+    </div>
+    <button class="btn-today" id="btn-jump-today">⌖ Jump to Today</button>
+  </section>
+
+  <!-- ══ FILTER BAR ═══════════════════════════════════════════════ -->
+  <div class="filter-bar" id="filter-bar">
+    <span class="filter-label">Show:</span>
+    <button class="fbtn active" data-filter="all">All</button>
+    <button class="fbtn" data-filter="L">Language</button>
+    <button class="fbtn" data-filter="T">Theory</button>
+    <button class="fbtn" data-filter="P">Practical</button>
+    <button class="fbtn" data-filter="M">Management</button>
+    <div class="filter-right">
+      <button class="fbtn-outline" id="btn-collapse-all">Collapse All</button>
+      <button class="fbtn-outline" id="btn-expand-all">Expand All</button>
+    </div>
+  </div>
+
+  <!-- ══ SUBJECT PROGRESS ═════════════════════════════════════════ -->
+  <section class="progress-section" id="progress-section">
+    <div class="section-header">
+      <h2 class="section-title">Subject Progress</h2>
+      <button class="section-toggle" id="btn-toggle-progress">Hide</button>
+    </div>
+    <div class="progress-grid" id="progress-grid"></div>
+  </section>
+
+  <!-- ══ CALENDAR ═════════════════════════════════════════════════ -->
+  <main class="calendar-wrap">
+    <div class="calendar" id="calendar"></div>
+  </main>
+
+  <!-- ══ SETTINGS MODAL ═══════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="settings-overlay"></div>
+  <aside class="settings-panel hidden" id="settings-panel">
+    <div class="sp-header">
+      <h2>Settings</h2>
+      <button class="sp-close" id="btn-close-settings">✕</button>
+    </div>
+    <div class="sp-tabs">
+      <button class="sp-tab active" data-tab="schedule">Schedule</button>
+      <button class="sp-tab" data-tab="subjects">Subjects</button>
+      <button class="sp-tab" data-tab="data">Data</button>
+    </div>
+    <div class="sp-body" id="tab-schedule">
+      <label class="sp-label">Start Date
+        <input type="date" id="cfg-start-date" class="sp-input">
+      </label>
+      <label class="sp-label">Duration (days)
+        <input type="number" id="cfg-duration" class="sp-input" min="7" max="120">
+      </label>
+      <label class="sp-label">Global lectures per subject per study day
+        <input type="number" id="cfg-lpd" class="sp-input" min="1" max="10">
+      </label>
+      <label class="sp-label">Hours per lecture (for daily estimate)
+        <input type="number" id="cfg-hpl" class="sp-input" min="0.25" max="4" step="0.25">
+      </label>
+    </div>
+    <div class="sp-body hidden" id="tab-subjects">
+      <p class="sp-hint">Set custom target lectures and lectures/day per subject. Toggle active/inactive to show or hide subjects.</p>
+      <div class="sp-subjects-grid" id="sp-subjects-grid"></div>
+      <button class="sp-add-btn" id="btn-add-subject">+ Add Subject</button>
+    </div>
+    <div class="sp-body hidden" id="tab-data">
+      <p class="sp-hint">Your data auto-saves to Firebase in real-time. Export a JSON backup anytime, or import a previous backup.</p>
+      <div class="sp-data-actions">
+        <button class="sp-action-btn" id="sp-export">⬇ Export JSON backup</button>
+        <button class="sp-action-btn" id="sp-import-trigger">⬆ Import JSON backup</button>
+        <input type="file" id="sp-import-file" accept=".json" style="display:none">
+        <hr class="sp-divider">
+        <button class="sp-action-btn danger" id="sp-reset">⚠ Reset all progress</button>
+      </div>
+    </div>
+    <div class="sp-footer">
+      <button class="sp-save" id="btn-save-settings">Save &amp; Apply</button>
+      <button class="sp-cancel" id="btn-cancel-settings">Cancel</button>
+    </div>
+  </aside>
+
+  <!-- ══ ADD SUBJECT MODAL ═════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="add-sub-overlay"></div>
+  <div class="add-sub-modal hidden" id="add-sub-modal">
+    <div class="sp-header">
+      <h2>Add Subject</h2>
+      <button class="sp-close" id="btn-close-add-sub">✕</button>
+    </div>
+    <label class="sp-label">Name
+      <input type="text" id="ns-name" class="sp-input" placeholder="e.g. CS101 (Algo)">
+    </label>
+    <label class="sp-label">Type
+      <select id="ns-type" class="sp-input">
+        <option value="L">Language</option>
+        <option value="T">Theory</option>
+        <option value="P">Practical</option>
+        <option value="M">Management</option>
+      </select>
+    </label>
+    <label class="sp-label">Study days</label>
+    <div class="ns-days" id="ns-days">
+      <label><input type="checkbox" value="1"> Mon</label>
+      <label><input type="checkbox" value="2"> Tue</label>
+      <label><input type="checkbox" value="3"> Wed</label>
+      <label><input type="checkbox" value="4"> Thu</label>
+      <label><input type="checkbox" value="5"> Fri</label>
+      <label><input type="checkbox" value="6"> Sat</label>
+    </div>
+    <label class="sp-label">Target lectures
+      <input type="number" id="ns-target" class="sp-input" value="20" min="1">
+    </label>
+    <div class="sp-footer">
+      <button class="sp-save"   id="btn-confirm-add-sub">Add Subject</button>
+      <button class="sp-cancel" id="btn-cancel-add-sub">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ══ SCRIPTS ══════════════════════════════════════════════════ -->
+  <!-- NOTE: firebase.js uses dynamic import() — no SDK script tag needed -->
+  <script src="js/data.js"></script>
+  <script src="js/firebase.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/plan.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/stats.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

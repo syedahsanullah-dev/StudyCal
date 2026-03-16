@@ -1,0 +1,166 @@
+/* ============================================================
+   calendar.css  —  Day cards, items, checkboxes, notes,
+                    badges, overdue / missed / today states
+   ============================================================ */
+
+/* ── CALENDAR GRID ───────────────────────────────────────── */
+.calendar-wrap { padding: 18px 22px 48px; }
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 13px;
+}
+
+/* ── DAY CARD ────────────────────────────────────────────── */
+.day-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--border2);
+  border-radius: var(--radius-lg);
+  display: flex; flex-direction: column;
+  transition: box-shadow var(--transition), border-top-color var(--transition);
+  overflow: hidden;
+}
+.day-card:hover { box-shadow: var(--shadow); }
+
+/* state variants */
+.day-card.is-today    { border-top-color: var(--c-today);   background: var(--c-today-bg); }
+.day-card.is-overdue  { border-top-color: var(--c-overdue); background: var(--c-overdue-bg); }
+.day-card.is-missed   { border-top-color: var(--c-missed);  background: var(--c-missed-bg); }
+.day-card.is-past:not(.is-today):not(.is-overdue):not(.is-missed) { opacity: .78; }
+.day-card.is-collapsed .dc-body { display: none; }
+
+/* ── CARD HEADER ─────────────────────────────────────────── */
+.dc-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 13px 9px;
+  border-bottom: 1px solid var(--border);
+  gap: 6px;
+}
+.dc-date-wrap { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
+.dc-date      { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; }
+
+/* badges */
+.dc-badge {
+  font-size: 10px; font-weight: 600;
+  padding: 1px 7px; border-radius: 10px;
+  white-space: nowrap; letter-spacing: .2px;
+}
+.today-badge   { background: var(--c-today-bg);   color: var(--c-today);   border: 1px solid var(--c-today); }
+.overdue-badge { background: var(--c-overdue-bg); color: var(--c-overdue); border: 1px solid var(--c-overdue); }
+.missed-badge  { background: var(--c-missed-bg);  color: var(--c-missed);  border: 1px solid var(--c-missed); }
+
+.dc-header-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.dc-pct {
+  font-size: 11px; font-family: var(--mono);
+  color: var(--text-muted);
+  background: var(--surface2);
+  padding: 2px 7px; border-radius: 8px;
+  white-space: nowrap;
+}
+.dc-pct.pct-done { background: var(--c-practical-bg); color: var(--c-practical); font-weight: 600; }
+
+.dc-collapse-btn {
+  background: none; border: none; padding: 0 3px;
+  font-size: 11px; color: var(--text-faint);
+  line-height: 1; transition: color var(--transition);
+}
+.dc-collapse-btn:hover { color: var(--text-muted); }
+
+/* ── CARD BODY ───────────────────────────────────────────── */
+.dc-body { padding: 10px 13px 12px; display: flex; flex-direction: column; gap: 8px; }
+
+/* ── DAY PROGRESS BAR ────────────────────────────────────── */
+.dc-bar-wrap {
+  width: 100%; height: 4px;
+  background: var(--surface3);
+  border-radius: 2px; overflow: hidden;
+}
+.dc-bar {
+  height: 100%; background: var(--accent);
+  border-radius: 2px;
+  transition: width .4s ease;
+}
+
+/* ── SUBJECT LIST ────────────────────────────────────────── */
+.dc-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+
+.dc-item {
+  border-left: 3px solid var(--border2);
+  padding-left: 9px;
+  border-radius: 0 5px 5px 0;
+  transition: background var(--transition);
+}
+.dc-item:hover { background: var(--surface2); }
+.dc-item.lang       { border-left-color: var(--c-lang-bar); }
+.dc-item.theory     { border-left-color: var(--c-theory-bar); }
+.dc-item.practical  { border-left-color: var(--c-practical-bar); }
+.dc-item.mgt        { border-left-color: var(--c-mgt-bar); }
+.dc-item.dc-done .dc-item-text { opacity: .4; text-decoration: line-through; }
+
+/* ── CHECKBOX LABEL ──────────────────────────────────────── */
+.dc-check-label {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+.dc-checkbox {
+  margin-top: 2px; flex-shrink: 0;
+  accent-color: var(--accent);
+  width: 14px; height: 14px; cursor: pointer;
+}
+.dc-item-text { display: flex; flex-direction: column; gap: 1px; }
+.dc-sub-name  { font-size: 12.5px; font-weight: 500; color: var(--text); }
+.dc-lec-range { font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
+
+/* special list items */
+.dc-revision {
+  display: flex; align-items: flex-start; gap: 9px;
+  padding: 4px 0; color: var(--text-muted); font-size: 12.5px;
+}
+.dc-rev-icon { font-size: 16px; flex-shrink: 0; }
+.dc-revision strong { color: var(--text); }
+.dc-complete  { font-size: 12.5px; color: var(--c-done); padding: 4px 0; }
+.dc-no-match  { font-size: 12px; color: var(--text-faint); font-style: italic; padding: 4px 0; }
+
+/* ── MISSED TOGGLE ───────────────────────────────────────── */
+.dc-missed-wrap {
+  padding-top: 6px;
+  border-top: 1px dashed var(--border);
+}
+.dc-missed-label {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 11.5px; color: var(--text-muted);
+  cursor: pointer;
+}
+.dc-missed-label input[type=checkbox] { accent-color: var(--c-missed); cursor: pointer; }
+.dc-missed-label:hover { color: var(--c-missed); }
+
+/* ── NOTES FIELD ─────────────────────────────────────────── */
+.dc-notes-wrap { padding-top: 6px; border-top: 1px dashed var(--border); }
+.dc-notes {
+  width: 100%; resize: vertical;
+  padding: 6px 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text);
+  font-size: 11.5px;
+  line-height: 1.5;
+  transition: border-color var(--transition);
+}
+.dc-notes:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
+}
+.dc-notes::placeholder { color: var(--text-faint); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .calendar-wrap { padding: 12px 14px 36px; }
+  .calendar { grid-template-columns: 1fr 1fr; gap: 10px; }
+}
+@media (max-width: 400px) {
+  .calendar { grid-template-columns: 1fr; }
+}

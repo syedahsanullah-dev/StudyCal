@@ -1,0 +1,168 @@
+{
+  "startDate": "2026-03-17",
+  "durationDays": 30,
+  "lecsPerDay": 2,
+  "hoursPerLec": 1,
+  "subjects": [
+    {
+      "id": "sub_1773694306366",
+      "name": "C++",
+      "type": "L",
+      "days": [
+        1,
+        2
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694324770",
+      "name": "JAVA",
+      "type": "L",
+      "days": [
+        5,
+        6
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694337061",
+      "name": "C#",
+      "type": "L",
+      "days": [
+        3,
+        4
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694419220",
+      "name": "CS311 Web (XML)",
+      "type": "T",
+      "days": [
+        2,
+        4,
+        6
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694457549",
+      "name": "CS603 (Arch) (HARD)",
+      "type": "T",
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694472237",
+      "name": "CS304P",
+      "type": "L",
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694512003",
+      "name": "CS403P (DBMS)",
+      "type": "T",
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694563892",
+      "name": "CS311 (WEB and XML)",
+      "type": "T",
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694599124",
+      "name": "CS611 (SQE) (HARD)",
+      "type": "T",
+      "days": [
+        2,
+        4,
+        6
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694620374",
+      "name": "CS615 (SPM) (HARD)",
+      "type": "T",
+      "days": [
+        2,
+        4,
+        6
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694633420",
+      "name": "CS619 (Project)",
+      "type": "T",
+      "days": [
+        2,
+        4,
+        6
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    },
+    {
+      "id": "sub_1773694653055",
+      "name": "CS604P (Arch)",
+      "type": "P",
+      "days": [
+        1,
+        3,
+        5
+      ],
+      "targetLecs": 20,
+      "lecsPerDay": null,
+      "active": true
+    }
+  ],
+  "checked": {},
+  "notes": {},
+  "missed": {},
+  "extras": {},
+  "darkMode": false,
+  "filter": "all",
+  "collapsed": {}
+}
