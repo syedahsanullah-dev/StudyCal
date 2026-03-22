@@ -164,3 +164,51 @@
 @media (max-width: 400px) {
   .calendar { grid-template-columns: 1fr; }
 }
+
+/* ── DISABLED (DAY OFF) CARD ─────────────────────────────── */
+.day-card.is-disabled {
+  border-top-color: #6b7280;
+  background: var(--surface2);
+  opacity: .75;
+}
+.dc-dayoff {
+  display: flex; align-items: flex-start; gap: 9px;
+  padding: 4px 0; color: var(--text-muted); font-size: 12.5px;
+}
+.dc-dayoff-icon { font-size: 16px; flex-shrink: 0; }
+.dc-dayoff strong { color: var(--text); }
+
+/* ── DAY OFF TOGGLE ──────────────────────────────────────── */
+.dc-dayoff-wrap {
+  padding-top: 6px;
+  border-top: 1px dashed var(--border);
+}
+.dc-dayoff-label {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 11.5px; color: var(--text-muted);
+  cursor: pointer;
+}
+.dc-dayoff-label input[type=checkbox] { accent-color: #6b7280; cursor: pointer; }
+.dc-dayoff-label:hover { color: var(--text); }
+
+/* ── SUNDAY CATCH-UP ITEMS ───────────────────────────────── */
+.dc-catchup-header {
+  padding: 6px 0 2px;
+  font-size: 11.5px; font-weight: 600;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border);
+  margin-top: 4px;
+  list-style: none;
+}
+.dc-catchup-item {
+  border-left: 3px solid #f59e0b !important;
+  background: #fffbeb;
+}
+body.dark .dc-catchup-item { background: #1f1500; }
+
+.dc-from-date {
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-left: 4px;
+  font-style: italic;
+}
