@@ -259,3 +259,25 @@ const SETTINGS = (() => {
 
   return { init, open, close };
 })();
+
+// ...existing code...
+
+document.getElementById('btn-confirm-add-sub').addEventListener('click', () => {
+  // ...existing code to collect subject fields...
+  const sessions = window.sessionsFeature.collectSessionsFromUI();
+  const subject = {
+    // ...other subject fields...
+    sessions: sessions
+  };
+  // ...save subject...
+  window.sessionsFeature.resetTempSessions();
+  // ...close modal, etc...
+});
+
+// When opening the modal, reset sessions
+document.getElementById('btn-add-subject').addEventListener('click', () => {
+  window.sessionsFeature.resetTempSessions();
+  // ...existing code...
+});
+
+// ...existing code...
