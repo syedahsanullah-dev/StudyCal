@@ -1,0 +1,223 @@
+/* ══════════════════════════════════════════════════════════════════
+   sessions.css  –  Online Sessions feature styles
+   
+   HOW TO INCLUDE:
+   Add this line to your index.html <head>, after the other CSS links:
+   <link rel="stylesheet" href="css/sessions.css">
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Modal: section title row ───────────────────────────────────── */
+.sp-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 18px 0 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary, #666);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-add-session {
+  background: var(--accent, #4f8ef7);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+}
+.btn-add-session:hover {
+  background: var(--accent-dark, #2d6de0);
+  transform: translateY(-1px);
+}
+
+/* ── Sessions list container ────────────────────────────────────── */
+.ns-sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.ns-sessions-empty {
+  font-size: 0.82rem;
+  color: var(--text-muted, #aaa);
+  text-align: center;
+  padding: 10px 0 4px;
+  margin: 0;
+}
+
+/* ── Each session row ───────────────────────────────────────────── */
+.ns-session-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--card-bg, rgba(0,0,0,0.04));
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 10px;
+  padding: 10px 10px 10px 12px;
+  animation: sessionSlideIn 0.2s ease;
+}
+
+@keyframes sessionSlideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nsr-fields {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.nsr-day {
+  min-width: 120px;
+  flex: 1;
+}
+
+.nsr-time-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.nsr-time {
+  flex: 1;
+  min-width: 90px;
+}
+
+.nsr-to {
+  font-size: 0.78rem;
+  color: var(--text-muted, #999);
+  white-space: nowrap;
+}
+
+.nsr-link {
+  flex: 2;
+  min-width: 180px;
+}
+
+/* Delete button */
+.nsr-del {
+  background: none;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 6px;
+  color: var(--text-muted, #aaa);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.nsr-del:hover {
+  background: #fee;
+  color: #e55;
+  border-color: #e55;
+}
+
+/* ── Subject card: read-only sessions table ─────────────────────── */
+.subject-sessions-wrap {
+  margin-top: 10px;
+  border-top: 1px solid var(--border, #e8e8e8);
+  padding-top: 8px;
+}
+
+.subject-sessions-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary, #666);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.subject-sessions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.subject-sessions-table thead th {
+  text-align: left;
+  padding: 4px 8px;
+  color: var(--text-muted, #999);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border, #eee);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.subject-sessions-table tbody td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border, #f0f0f0);
+  color: var(--text-primary, #333);
+  vertical-align: middle;
+}
+
+.subject-sessions-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.subject-sessions-table tbody tr:hover td {
+  background: var(--hover-bg, rgba(79,142,247,0.05));
+}
+
+/* Meeting link */
+.session-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent, #4f8ef7);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--accent, #4f8ef7);
+  transition: background 0.15s, color 0.15s;
+}
+.session-link:hover {
+  background: var(--accent, #4f8ef7);
+  color: #fff;
+}
+
+.session-no-link {
+  color: var(--text-muted, #ccc);
+}
+
+/* ── Dark mode overrides ────────────────────────────────────────── */
+body.dark .ns-session-row {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+}
+
+body.dark .nsr-del {
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.4);
+}
+body.dark .nsr-del:hover {
+  background: rgba(229,85,85,0.15);
+  color: #e55;
+  border-color: #e55;
+}
+
+body.dark .subject-sessions-table tbody td,
+body.dark .subject-sessions-table thead th {
+  border-color: rgba(255,255,255,0.08);
+}
+body.dark .subject-sessions-table tbody tr:hover td {
+  background: rgba(79,142,247,0.08);
+}
