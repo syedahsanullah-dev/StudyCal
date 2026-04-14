@@ -1,0 +1,320 @@
+{
+  "startDate": "2026-04-01",
+  "durationDays": 30,
+  "lecsPerDay": 1,
+  "hoursPerLec": 1,
+  "subjects": [
+    {
+      "active": true,
+      "days": [
+        1,
+        2
+      ],
+      "id": "sub_1773694306366",
+      "lecsPerDay": 1,
+      "name": "C++",
+      "targetLecs": 10,
+      "type": "L"
+    },
+    {
+      "active": true,
+      "days": [
+        5,
+        6
+      ],
+      "id": "sub_1773694324770",
+      "lecsPerDay": 1,
+      "name": "JAVA",
+      "targetLecs": 10,
+      "type": "L"
+    },
+    {
+      "active": true,
+      "days": [
+        3,
+        4
+      ],
+      "id": "sub_1773694337061",
+      "lecsPerDay": 1,
+      "name": "C#",
+      "targetLecs": 20,
+      "type": "L"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773694419220",
+      "lecsPerDay": 1,
+      "name": "CS311 Web (XML)",
+      "targetLecs": 25,
+      "type": "T"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773694457549",
+      "lecsPerDay": 1,
+      "name": "CS603 (Arch) + CS603P  (HARD)",
+      "targetLecs": 25,
+      "type": "T"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773694472237",
+      "lecsPerDay": 1,
+      "name": "CS304P OOP",
+      "targetLecs": 25,
+      "type": "T"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773694512003",
+      "lecsPerDay": 1,
+      "name": "CS403P (DBMS) SQL",
+      "targetLecs": 25,
+      "type": "T"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773694599124",
+      "lecsPerDay": 1,
+      "name": "CS611 (SQE) (HARD)",
+      "targetLecs": 25,
+      "type": "T"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773694620374",
+      "lecsPerDay": 1,
+      "name": "CS615 (SPM) (HARD)",
+      "targetLecs": 25,
+      "type": "T"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773694633420",
+      "lecsPerDay": 1,
+      "name": "CS619 (Project)",
+      "targetLecs": 25,
+      "type": "T"
+    },
+    {
+      "active": true,
+      "days": [
+        1
+      ],
+      "id": "sub_1773810470016",
+      "lecsPerDay": 1,
+      "name": "AI and Prompt Engr",
+      "targetLecs": 10,
+      "type": "P"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773910710148",
+      "lecsPerDay": 1,
+      "name": "Eye Excercise",
+      "targetLecs": 30,
+      "type": "P"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1773910737315",
+      "lecsPerDay": 1,
+      "name": "Face Excercise",
+      "targetLecs": 30,
+      "type": "P"
+    },
+    {
+      "active": true,
+      "days": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "id": "sub_1774251411331",
+      "lecsPerDay": 1,
+      "name": "Nodejs and Expressjs",
+      "targetLecs": 20,
+      "type": "L"
+    },
+    {
+      "active": true,
+      "days": [
+        3,
+        4
+      ],
+      "id": "sub_1774253764712",
+      "lecsPerDay": 1,
+      "name": "SQL EntityFramework",
+      "targetLecs": 10,
+      "type": "L"
+    }
+  ],
+  "checked": {
+    "sub_1773694306366-1": true,
+    "sub_1773694324770-1": true,
+    "sub_1773694324770-2": true,
+    "sub_1773694324770-3": true,
+    "sub_1773694337061-1": true,
+    "sub_1773694337061-2": true,
+    "sub_1773694337061-3": true,
+    "sub_1773694419220-1": true,
+    "sub_1773694419220-2": true,
+    "sub_1773694419220-3": true,
+    "sub_1773694419220-4": true,
+    "sub_1773694419220-5": true,
+    "sub_1773694419220-6": true,
+    "sub_1773694457549-1": true,
+    "sub_1773694457549-2": true,
+    "sub_1773694457549-3": true,
+    "sub_1773694457549-4": true,
+    "sub_1773694457549-5": true,
+    "sub_1773694457549-6": true,
+    "sub_1773694472237-1": true,
+    "sub_1773694472237-2": true,
+    "sub_1773694472237-3": true,
+    "sub_1773694472237-4": true,
+    "sub_1773694512003-1": true,
+    "sub_1773694512003-2": true,
+    "sub_1773694512003-3": true,
+    "sub_1773694512003-4": true,
+    "sub_1773694512003-5": true,
+    "sub_1773694599124-1": true,
+    "sub_1773694599124-2": true,
+    "sub_1773694599124-3": true,
+    "sub_1773694599124-4": true,
+    "sub_1773694599124-5": true,
+    "sub_1773694599124-6": true,
+    "sub_1773694620374-1": true,
+    "sub_1773694620374-2": true,
+    "sub_1773694620374-3": true,
+    "sub_1773694620374-4": true,
+    "sub_1773694620374-5": true,
+    "sub_1773694633420-1": true,
+    "sub_1773694633420-2": true,
+    "sub_1773694633420-3": true,
+    "sub_1773694653055-1": true,
+    "sub_1773694653055-2": true,
+    "sub_1773694653055-3": true,
+    "sub_1773910710148-1": true,
+    "sub_1773910710148-2": true,
+    "sub_1773910710148-3": true,
+    "sub_1773910710148-4": true,
+    "sub_1773910710148-5": true,
+    "sub_1773910737315-1": true,
+    "sub_1773910737315-2": true,
+    "sub_1773910737315-3": true,
+    "sub_1773910737315-4": true,
+    "sub_1773910737315-5": true,
+    "sub_1773910737315-7": true,
+    "sub_1774251411331-1": true,
+    "sub_1774251411331-10": true,
+    "sub_1774251411331-11": true,
+    "sub_1774251411331-12": true,
+    "sub_1774251411331-13": true,
+    "sub_1774251411331-14": true,
+    "sub_1774251411331-15": true,
+    "sub_1774251411331-16": true,
+    "sub_1774251411331-17": true,
+    "sub_1774251411331-18": true,
+    "sub_1774251411331-2": true,
+    "sub_1774251411331-3": true,
+    "sub_1774251411331-4": true,
+    "sub_1774251411331-5": true,
+    "sub_1774251411331-6": true,
+    "sub_1774251411331-7": true,
+    "sub_1774251411331-8": true,
+    "sub_1774251411331-9": true,
+    "sub_1774253764712-1": true,
+    "sub_1774253764712-2": true,
+    "sub_1774253764712-3": true
+  },
+  "notes": {},
+  "missed": {},
+  "extras": {
+    "sub_1773694633420": 1
+  },
+  "collapsed": {},
+  "disabledDates": {
+    "2026-03-23": true,
+    "2026-03-24": true,
+    "2026-03-25": true,
+    "2026-03-26": true
+  },
+  "darkMode": false,
+  "filter": "all"
+}
