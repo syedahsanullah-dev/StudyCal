@@ -20,71 +20,7 @@
  *   ]
  * ─────────────────────────────────────────────────────────────────
  */
-// ...existing code...
 
-// Store sessions temporarily while adding a subject
-let tempSessions = [];
-
-function renderSessionsList() {
-  const list = document.getElementById('ns-sessions-list');
-  list.innerHTML = '';
-  if (tempSessions.length === 0) {
-    list.innerHTML = '<p class="ns-sessions-empty" id="ns-sessions-empty">No online sessions added yet.</p>';
-    return;
-  }
-  tempSessions.forEach((session, idx) => {
-    const row = document.createElement('div');
-    row.className = 'ns-session-row';
-    row.innerHTML = `
-      <input type="text" class="ns-session-day" value="${session.day}" placeholder="Day (e.g. Mon)">
-      <input type="time" class="ns-session-time" value="${session.time}">
-      <input type="url" class="ns-session-link" value="${session.link}" placeholder="Session Link">
-      <button type="button" class="btn-remove-session" data-idx="${idx}">✕</button>
-    `;
-    list.appendChild(row);
-  });
-}
-
-document.getElementById('btn-add-session').addEventListener('click', () => {
-  tempSessions.push({ day: '', time: '', link: '' });
-  renderSessionsList();
-});
-
-document.getElementById('ns-sessions-list').addEventListener('click', (e) => {
-  if (e.target.classList.contains('btn-remove-session')) {
-    const idx = parseInt(e.target.getAttribute('data-idx'));
-    tempSessions.splice(idx, 1);
-    renderSessionsList();
-  }
-});
-
-// Collect session data before saving subject
-function collectSessionsFromUI() {
-  const rows = document.querySelectorAll('.ns-session-row');
-  return Array.from(rows).map(row => ({
-    day: row.querySelector('.ns-session-day').value,
-    time: row.querySelector('.ns-session-time').value,
-    link: row.querySelector('.ns-session-link').value
-  })).filter(s => s.day && s.time && s.link);
-}
-
-// Reset sessions when modal opens/closes
-function resetTempSessions() {
-  tempSessions = [];
-  renderSessionsList();
-}
-
-// Export functions for use in settings.js
-window.sessionsFeature = {
-  collectSessionsFromUI,
-  resetTempSessions,
-  setSessions(sessions) {
-    tempSessions = sessions ? [...sessions] : [];
-    renderSessionsList();
-  }
-};
-
-// ...existing code...
 const Sessions = (() => {
   // ── Internal state for the currently open modal ───────────────
   let _rows = []; // array of session objects being edited
